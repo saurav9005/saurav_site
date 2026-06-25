@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saurav Karki — Commerce Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#060D1F;--surface:#0F1A35;
+  --ind:#4F46E5;--indl:#818CF8;
+  --indd:rgba(79,70,229,0.12);--indb:rgba(79,70,229,0.25);
+  --t:#E8EEFF;--t2:#94A3B8;--t3:#475569;--w:#F0F4FF;
+  --grn:#10B981;--gld:#F59E0B;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--t2);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+.ticker{background:var(--ind);padding:10px 0;overflow:hidden;white-space:nowrap}
+.tt{display:inline-flex;animation:tick 55s linear infinite}
+.ti{font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:.08em;color:rgba(255,255,255,.88);padding:0 36px;display:flex;align-items:center;gap:10px}
+.ti::before{content:'//';opacity:.45}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.layout{display:grid;grid-template-columns:360px 1fr;min-height:100vh;max-width:1400px;margin:0 auto}
+
+.sidebar{position:sticky;top:0;height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:56px 40px;border-right:1px solid rgba(79,70,229,.1);overflow:hidden}
+.ey{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--indl);margin-bottom:16px}
+.sn{font-family:'Syne',sans-serif;font-size:38px;font-weight:800;color:var(--w);letter-spacing:-.03em;line-height:1;margin-bottom:8px}
+.st{font-family:'Syne',sans-serif;font-size:14px;font-weight:700;color:var(--indl);margin-bottom:20px}
+.sd{font-size:13.5px;color:var(--t2);line-height:1.75;border-left:2px solid var(--ind);padding-left:14px;max-width:270px}
+.snav{margin-top:44px;list-style:none;display:flex;flex-direction:column;gap:2px}
+.snav a{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--t3);font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:7px 0;transition:color .2s}
+.snav a .nl{display:block;height:1px;width:28px;background:var(--t3);transition:width .25s,background .2s}
+.snav a:hover,.snav a.active{color:var(--w)}
+.snav a:hover .nl,.snav a.active .nl{width:52px;background:var(--indl)}
+.ss{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t2);letter-spacing:.04em;margin-bottom:20px;line-height:1.6}
+.soc{display:flex;gap:16px}
+.soc a{color:var(--t3);text-decoration:none;transition:color .2s,transform .2s;display:flex}
+.soc a:hover{color:var(--indl);transform:translateY(-2px)}
+.soc svg{width:18px;height:18px;fill:currentColor}
+.soc .sk{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+.content{padding:56px 64px 140px}
+.sect{margin-bottom:110px;scroll-margin-top:60px}
+.sl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--indl);display:flex;align-items:center;gap:12px;margin-bottom:36px}
+.sl::after{content:'';display:block;height:1px;width:56px;background:var(--indb)}
+
+.vh{font-family:'Syne',sans-serif;font-size:clamp(28px,4vw,50px);font-weight:800;color:var(--w);line-height:1.05;letter-spacing:-.03em;margin-bottom:28px}
+.vh .ac{color:var(--indl)}.vh .sk2{text-decoration:line-through;color:var(--t3);font-weight:400}
+.vsub{font-size:16px;color:var(--t2);line-height:1.8;max-width:580px;margin-bottom:48px;font-weight:300}
+.shifts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.shift{padding:22px 24px;border:1px solid var(--indb);border-radius:6px;background:var(--indd);transition:background .2s,border-color .2s}
+.shift:hover{background:rgba(79,70,229,.2);border-color:rgba(79,70,229,.5)}
+.sfrom{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3);letter-spacing:.06em;text-decoration:line-through;margin-bottom:6px}
+.sto{font-family:'Syne',sans-serif;font-size:16px;font-weight:700;color:var(--indl);margin-bottom:10px}
+.sdesc{font-size:13px;color:var(--t2);line-height:1.6}
+
+.ab p{font-size:15px;color:var(--t2);line-height:1.85;margin-bottom:18px;font-weight:300}
+.ab strong{color:var(--t);font-weight:500}
+.hl{color:var(--indl);font-weight:500}
+
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.mc{background:var(--surface);border:1px solid var(--indb);border-radius:6px;padding:22px 18px}
+.mn{font-family:'Syne',sans-serif;font-size:clamp(14px,2vw,22px);font-weight:800;color:var(--w);letter-spacing:-.02em;margin-bottom:4px;line-height:1.2}
+.ml{font-size:12px;color:var(--t2);line-height:1.5}
+
+.elist,.plist,.alist{display:flex;flex-direction:column;gap:4px}
+.er{display:grid;grid-template-columns:108px 1fr;gap:28px;padding:22px 18px;border-radius:6px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.er:hover{background:var(--surface);border-color:var(--indb)}
+.er:hover .erl{color:var(--indl)}
+.ed{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--t3);letter-spacing:.05em;padding-top:2px;line-height:1.7}
+.erl{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--t);margin-bottom:3px;transition:color .2s}
+.eco{font-size:12px;color:var(--indl);margin-bottom:10px;font-weight:500;letter-spacing:.03em}
+.etxt{font-size:13.5px;color:var(--t2);line-height:1.7;margin-bottom:14px;font-weight:300}
+.er.compressed .etxt{color:var(--t3)}
+.et-areas{display:flex;flex-direction:column;gap:0;margin-top:18px;border:1px solid var(--indb);border-radius:6px;overflow:hidden}
+.et-area{padding:14px 18px;border-bottom:1px solid var(--indb)}
+.et-area:last-child{border-bottom:none}
+.et-area:hover{background:rgba(79,70,229,.06)}
+.et-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--indl);margin-bottom:6px}
+.et-body{font-size:13px;color:var(--t2);line-height:1.7;font-weight:300}
+.et-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px}
+.et-tag{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--indl);background:var(--indd);padding:2px 9px;border-radius:3px;letter-spacing:.04em;border:1px solid var(--indb)}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--indl);background:var(--indd);padding:3px 10px;border-radius:3px;letter-spacing:.04em}
+
+.pr{display:grid;grid-template-columns:108px 1fr;gap:28px;padding:22px 18px;border-radius:6px;border:1px solid transparent;transition:background .2s,border-color .2s;cursor:default}
+.pr:hover{background:var(--surface);border-color:var(--indb)}
+.pr:hover .prt{color:var(--indl)}
+.pb{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;padding-top:2px}
+.pb.live{color:var(--grn)}.pb.building{color:var(--gld)}.pb.research{color:#A78BFA}
+.prt{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--t);margin-bottom:8px;transition:color .2s;display:flex;align-items:center;gap:8px}
+.prt svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;opacity:.35;transition:opacity .2s,transform .2s}
+.pr:hover .prt svg{opacity:1;transform:translate(2px,-2px)}
+.ptxt{font-size:13.5px;color:var(--t2);line-height:1.7;margin-bottom:12px;font-weight:300}
+
+.cslist{display:flex;flex-direction:column;gap:12px}
+.cs{background:var(--surface);border:1px solid var(--indb);border-radius:8px;padding:32px}
+.cst{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;color:var(--w);margin-bottom:20px}
+.csrow{display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px}
+.cscol p:first-child{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--indl);margin-bottom:8px}
+.cscol p:last-child{font-size:13.5px;color:var(--t2);line-height:1.65;font-weight:300}
+
+.rcat{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--indl);margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid var(--indb);margin-top:36px}
+.rcat:first-child{margin-top:0}
+.rlist{display:flex;flex-direction:column;gap:4px}
+.ri{display:grid;grid-template-columns:90px 1fr;gap:28px;padding:18px;border-radius:6px;border:1px solid transparent;transition:background .2s,border-color .2s}
+.ri:hover{background:var(--surface);border-color:var(--indb)}
+.rit{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--t);margin-bottom:6px;line-height:1.3}
+.rix{font-size:13px;color:var(--t2);line-height:1.65;font-weight:300}
+.ribadge{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.06em;padding:3px 10px;border-radius:3px;display:inline-block;margin-top:8px}
+.ribadge.soon{color:var(--gld);background:rgba(245,158,11,.1)}
+.ribadge.live{color:var(--grn);background:rgba(16,185,129,.1)}
+.ribadge.wp{color:#A78BFA;background:rgba(167,139,250,.1)}
+.rstat{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--t3);padding-top:2px;letter-spacing:.04em}
+
+.rh{background:var(--surface);border:1px solid var(--indb);border-radius:8px;padding:38px;margin-bottom:14px}
+.rhnum{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--indl);letter-spacing:.15em;margin-bottom:12px}
+.rhtcl{font-family:'Syne',sans-serif;font-size:20px;font-weight:700;color:var(--w);line-height:1.25;margin-bottom:14px;letter-spacing:-.01em}
+.rhbody{font-size:14px;color:var(--t2);line-height:1.75;font-weight:300}
+.rhbody strong{color:var(--t);font-weight:500}
+
+.ar{display:grid;grid-template-columns:90px 1fr;gap:28px;padding:20px 18px;border-radius:6px;border:1px solid transparent;transition:background .2s,border-color .2s;text-decoration:none}
+.ar:hover{background:var(--surface);border-color:var(--indb)}
+.ar:hover .att{color:var(--indl)}
+.adt{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--t3);letter-spacing:.05em;padding-top:3px}
+.att{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--t);margin-bottom:7px;transition:color .2s;display:flex;align-items:center;gap:8px}
+.att svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;opacity:0;transition:opacity .2s,transform .2s}
+.ar:hover .att svg{opacity:1;transform:translate(2px,-2px)}
+.aex{font-size:13.5px;color:var(--t2);line-height:1.7;margin-bottom:10px;font-weight:300}
+.acat{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--indl);background:var(--indd);padding:3px 10px;border-radius:3px;display:inline-block;letter-spacing:.04em}
+
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.sgl{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--indl);margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--indb)}
+.chips{display:flex;flex-wrap:wrap;gap:7px}
+.chip{font-size:12px;color:var(--t2);border:1px solid var(--t3);padding:5px 12px;border-radius:3px;transition:color .15s,border-color .15s;cursor:default}
+.chip:hover{color:var(--indl);border-color:var(--indl)}
+
+.cw{max-width:480px}
+.cx-label{font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--indl);margin-bottom:16px}
+.cx-list{list-style:none;margin-bottom:40px;display:flex;flex-direction:column;gap:10px}
+.cx-list li{font-family:'Syne',sans-serif;font-size:18px;font-weight:700;color:var(--t);display:flex;align-items:center;gap:12px;letter-spacing:-.01em}
+.cx-list li::before{content:'·';color:var(--indl);font-size:22px;line-height:1;flex-shrink:0}
+.cx-q{font-size:15px;color:var(--t2);margin-bottom:8px;font-weight:300}
+.ch{font-family:'Syne',sans-serif;font-size:clamp(30px,4vw,48px);font-weight:800;color:var(--w);letter-spacing:-.03em;line-height:1.05;margin-bottom:16px}
+.ch span{color:var(--indl)}
+.cp{font-size:15px;color:var(--t2);line-height:1.75;margin-bottom:36px;font-weight:300}
+.cbtn{display:inline-flex;align-items:center;gap:10px;padding:15px 30px;border:1px solid var(--ind);color:var(--indl);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:12px;letter-spacing:.08em;border-radius:4px;transition:background .2s,color .2s}
+.cbtn:hover{background:var(--ind);color:var(--w)}
+.fn{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--t3);margin-top:72px;line-height:1.7}
+.fn a{color:var(--t2);text-decoration:none;transition:color .15s}
+.fn a:hover{color:var(--indl)}
+
+@media(max-width:920px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{position:relative;height:auto;padding:36px 24px 28px;border-right:none;border-bottom:1px solid var(--indb)}
+  .snav{display:none}
+  .content{padding:36px 24px 80px}
+  .shifts,.sgrid,.csrow{grid-template-columns:1fr}
+  .mgrid{grid-template-columns:1fr 1fr}
+  .er,.pr,.ar,.ri{grid-template-columns:1fr;gap:8px}
+  .rh{padding:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="ticker" aria-hidden="true">
+  <div class="tt">
+    <span class="ti">AI agents don't browse — they decide</span>
+    <span class="ti">Merchandising is becoming knowledge engineering</span>
+    <span class="ti">The next moat is structured product intelligence</span>
+    <span class="ti">Shopify is winning the agentic commerce era</span>
+    <span class="ti">Consumer behavior shifts faster than brand infrastructure</span>
+    <span class="ti">The brands AI trusts will own the next decade</span>
+    <span class="ti">Inventory intelligence is a strategic asset, not a back-office problem</span>
+    <span class="ti">AI agents don't browse — they decide</span>
+    <span class="ti">Merchandising is becoming knowledge engineering</span>
+    <span class="ti">The next moat is structured product intelligence</span>
+    <span class="ti">Shopify is winning the agentic commerce era</span>
+    <span class="ti">Consumer behavior shifts faster than brand infrastructure</span>
+    <span class="ti">The brands AI trusts will own the next decade</span>
+    <span class="ti">Inventory intelligence is a strategic asset, not a back-office problem</span>
+  </div>
+</div>
+
+<div class="layout">
+<aside class="sidebar">
+  <div>
+    <p class="ey">Commerce Architect</p>
+    <h1 class="sn">Saurav<br>Karki</h1>
+    <p class="st">Commerce Systems &amp; AI Architect</p>
+    <p class="sd">I build the infrastructure that lets DTC brands scale — and think seriously about where AI is taking commerce next.</p>
+    <nav aria-label="Page sections">
+      <ul class="snav">
+        <li><a href="#vision"><span class="nl"></span>Vision</a></li>
+        <li><a href="#about"><span class="nl"></span>About</a></li>
+        <li><a href="#impact"><span class="nl"></span>Impact</a></li>
+        <li><a href="#experience"><span class="nl"></span>Experience</a></li>
+        <li><a href="#casestudies"><span class="nl"></span>Case studies</a></li>
+        <li><a href="#writing"><span class="nl"></span>Writing</a></li>
+        <li><a href="#capabilities"><span class="nl"></span>Capabilities</a></li>
+        <li><a href="#contact"><span class="nl"></span>Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div>
+    <p class="ss">Researching the intersection of<br>commerce and AI.</p>
+    <div class="soc">
+      <a href="https://www.linkedin.com/in/saurav9005/" target="_blank" aria-label="LinkedIn">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      </a>
+      <a href="mailto:saurav@example.com" aria-label="Email">
+        <svg class="sk" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </a>
+      <a href="#" aria-label="GitHub">
+        <svg viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+      </a>
+    </div>
+  </div>
+</aside>
+
+<main class="content">
+
+  <!-- VISION -->
+  <section id="vision" class="sect">
+    <p class="sl">The shift</p>
+    <h2 class="vh">Commerce isn't moving<br><span class="sk2">to mobile.</span><br>It's moving to<br><span class="ac">intelligence.</span></h2>
+    <p class="vsub">The next decade of ecommerce will not be won by better ads, bigger budgets, or faster websites. It will be won by brands whose data, products, and operations AI agents can understand, trust, and act on.</p>
+    <div class="shifts">
+      <div class="shift"><p class="sfrom">Browse → Convert</p><p class="sto">Understand → Recommend</p><p class="sdesc">AI agents don't scroll collections. They parse intent, compare structured data, and decide. Brands built for human browsing are already behind.</p></div>
+      <div class="shift"><p class="sfrom">SEO &amp; Paid Ads</p><p class="sto">Product Intelligence</p><p class="sdesc">The brands AI trusts will dominate discovery. Winning isn't about ranking — it's about being machine-readable, structured, and semantically rich.</p></div>
+      <div class="shift"><p class="sfrom">Merchandising</p><p class="sto">Knowledge Engineering</p><p class="sdesc">Category pages and filters were built for humans. The next format is structured product intelligence — data architectures AI can reason about.</p></div>
+      <div class="shift"><p class="sfrom">Inventory as cost center</p><p class="sto">Inventory as data asset</p><p class="sdesc">Real-time inventory intelligence is one of the least-understood competitive advantages in DTC today. And one of the most durable.</p></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="sect">
+    <p class="sl">About</p>
+    <div class="ab">
+      <p>I'm a <strong>commerce architect</strong>. I build the technology, data, and operational systems that help ecommerce brands scale.</p>
+      <p>Over the past five years, I've led ecommerce technology across <strong>Shopify Plus</strong>, merchandising, analytics, CRM, automation, international commerce, and business intelligence — connecting products, customers, and operations into a single commerce ecosystem.</p>
+      <p>Today, I'm focused on the future of retail: <span class="hl">AI, commerce intelligence, and building systems</span> that help businesses make smarter decisions.</p>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section id="impact" class="sect">
+    <p class="sl">Impact</p>
+    <div class="mgrid">
+      <div class="mc"><p class="mn">$25M+</p><p class="ml">Revenue Supported</p></div>
+      <div class="mc"><p class="mn">100K+</p><p class="ml">Monthly Visitors</p></div>
+      <div class="mc"><p class="mn">15+</p><p class="ml">Commerce Platforms</p></div>
+      <div class="mc"><p class="mn">50+</p><p class="ml">Business Automations</p></div>
+      <div class="mc"><p class="mn">Global</p><p class="ml">Commerce Infrastructure</p></div>
+      <div class="mc"><p class="mn">Shopify Plus</p><p class="ml">Platform Ownership</p></div>
+      <div class="mc"><p class="mn">Executive BI</p><p class="ml">Decision Intelligence</p></div>
+      <div class="mc"><p class="mn">AI Commerce</p><p class="ml">Building the Future</p></div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="sect">
+    <p class="sl">Experience</p>
+    <div class="elist">
+
+      <div class="er" style="grid-template-columns:108px 1fr">
+        <div class="ed">2021 —<br>Present</div>
+        <div>
+          <p class="erl">Ecommerce Growth &amp; Technology Lead</p>
+          <p class="eco">Elie Tahari · New York City</p>
+          <p class="etxt">Owned the full ecommerce technology stack at a luxury fashion brand — from platform architecture and lifecycle marketing to inventory intelligence, international expansion, and executive reporting. The connective tissue between business strategy and technical execution across every function in the company.</p>
+
+          <div class="et-areas">
+
+            <div class="et-area">
+              <p class="et-label">Website &amp; Platform</p>
+              <p class="et-body">Owned and maintained Shopify Plus end-to-end. Developed and optimized PDPs, PLPs, landing pages, and promotional experiences. Improved performance, UX, conversion rates, and SEO. Managed site merchandising, navigation, search, filtering, and customer journey optimization. Integrated and governed the full third-party technology stack.</p>
+              <div class="et-tags"><span class="et-tag">Shopify Plus</span><span class="et-tag">Liquid</span><span class="et-tag">JavaScript</span><span class="et-tag">HTML/CSS</span><span class="et-tag">Technical SEO</span><span class="et-tag">UX Optimization</span><span class="et-tag">Site Merchandising</span><span class="et-tag">Platform Management</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Lifecycle Marketing &amp; CRM</p>
+              <p class="et-body">Managed email and SMS marketing programs across the full customer lifecycle. Built segmentation strategies using purchase behavior, LTV, and engagement data. Developed automated flows — Welcome Series, Abandoned Cart, Browse Abandonment, Winback, and VIP Retention. Leveraged LTV data to personalize both marketing and merchandising experiences.</p>
+              <div class="et-tags"><span class="et-tag">Klaviyo</span><span class="et-tag">Email Marketing</span><span class="et-tag">SMS Marketing</span><span class="et-tag">Lifecycle Marketing</span><span class="et-tag">Customer Segmentation</span><span class="et-tag">Marketing Automation</span><span class="et-tag">CRM</span><span class="et-tag">Personalization</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Conversion Rate Optimization</p>
+              <p class="et-body">Ran continuous CRO programs using heatmaps, session recordings, funnel analysis, and A/B testing. Optimized promotional experiences, landing pages, product merchandising, and checkout journeys. Identified conversion bottlenecks and implemented solutions that increased revenue and customer engagement.</p>
+              <div class="et-tags"><span class="et-tag">Conversion Optimization</span><span class="et-tag">A/B Testing</span><span class="et-tag">Heatmaps</span><span class="et-tag">Session Recordings</span><span class="et-tag">Funnel Analysis</span><span class="et-tag">Landing Pages</span><span class="et-tag">UX Optimization</span><span class="et-tag">User Journey</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Analytics &amp; Data Intelligence</p>
+              <p class="et-body">Led migration from Universal Analytics to GA4 while maintaining reporting integrity with minimal variance. Built executive reporting frameworks covering revenue, customer acquisition, retention, product performance, and marketing effectiveness. Delivered actionable insights to leadership.</p>
+              <div class="et-tags"><span class="et-tag">GA4</span><span class="et-tag">Google Tag Manager</span><span class="et-tag">Looker Studio</span><span class="et-tag">Business Intelligence</span><span class="et-tag">Executive Reporting</span><span class="et-tag">Marketing Analytics</span><span class="et-tag">Revenue Analytics</span><span class="et-tag">Data Visualization</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Commerce Intelligence &amp; Merchandising</p>
+              <p class="et-body">Developed product tagging architecture to improve merchandising, discovery, segmentation, and personalization. Implemented customer-value-based merchandising strategies. Built promotional frameworks aligned with behavior and inventory goals. Managed product onboarding, categorization, and catalog governance at scale.</p>
+              <div class="et-tags"><span class="et-tag">Digital Merchandising</span><span class="et-tag">Commerce Intelligence</span><span class="et-tag">Product Tagging</span><span class="et-tag">Product Taxonomy</span><span class="et-tag">Personalization</span><span class="et-tag">Customer Segmentation</span><span class="et-tag">Catalog Management</span><span class="et-tag">Product Discovery</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Omnichannel &amp; Sales Channels</p>
+              <p class="et-body">Managed product distribution across Google Merchant Center, Meta Commerce, TikTok Shop, Criteo, and affiliate platforms. Enhanced product metadata and feed quality to improve discoverability and ad performance. Established channel integrations and governance. Recovered compromised business accounts and restored operational continuity.</p>
+              <div class="et-tags"><span class="et-tag">Google Merchant</span><span class="et-tag">Meta Commerce</span><span class="et-tag">TikTok Shop</span><span class="et-tag">Feed Management</span><span class="et-tag">Product Syndication</span><span class="et-tag">Channel Integration</span><span class="et-tag">Affiliate Marketing</span><span class="et-tag">Catalog Management</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Commerce Systems &amp; Operational Technology</p>
+              <p class="et-body">Designed and built internal commerce intelligence tools. Developed ERP reporting systems with visibility into orders, customers, returns, inventory, and operational performance. Created inventory management workflows, reporting automation, executive dashboards, and flash sale reporting systems.</p>
+              <div class="et-tags"><span class="et-tag">ERP Systems</span><span class="et-tag">Commerce Intelligence</span><span class="et-tag">Business Intelligence</span><span class="et-tag">Inventory Management</span><span class="et-tag">Workflow Automation</span><span class="et-tag">Executive Dashboards</span><span class="et-tag">Reporting Automation</span><span class="et-tag">Operations Analytics</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Compliance &amp; Governance</p>
+              <p class="et-body">Led ADA accessibility remediation. Managed pricing and promotional compliance. Reported fraudulent websites and brand misuse. Controlled user permissions and platform governance across Shopify, GA, Meta, TikTok, CRM, and the full technology stack. Reviewed vendor agreements, NDAs, and platform access requirements.</p>
+              <div class="et-tags"><span class="et-tag">ADA Compliance</span><span class="et-tag">Platform Governance</span><span class="et-tag">User Access</span><span class="et-tag">Pricing Compliance</span><span class="et-tag">Brand Protection</span><span class="et-tag">Vendor Management</span><span class="et-tag">Shopify Admin</span><span class="et-tag">CRM Administration</span></div>
+            </div>
+
+            <div class="et-area">
+              <p class="et-label">Cross-Functional Leadership</p>
+              <p class="et-body">Partnered with Marketing, Creative, Finance, Production, Logistics, and Customer Service. Collaborated directly with VP, CFO, and Creative Director on strategic initiatives. Managed external development partners and technology vendors. Primary bridge between business stakeholders and technical execution.</p>
+              <div class="et-tags"><span class="et-tag">Executive Collaboration</span><span class="et-tag">Business Strategy</span><span class="et-tag">Stakeholder Management</span><span class="et-tag">Vendor Management</span><span class="et-tag">Program Management</span><span class="et-tag">Change Management</span><span class="et-tag">Strategic Planning</span><span class="et-tag">Decision Support</span></div>
+            </div>
+
+          </div>
+
+          <div class="tags" style="margin-top:20px">
+            <span class="tag">Shopify Plus</span><span class="tag">Klaviyo</span><span class="tag">GA4</span><span class="tag">Gorgias</span><span class="tag">APIs</span><span class="tag">SQL</span><span class="tag">BI Dashboards</span><span class="tag">Meta Commerce</span><span class="tag">TikTok Shop</span><span class="tag">CRO</span><span class="tag">ERP</span><span class="tag">OMS</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="er compressed">
+        <div class="ed">2020 —<br>2021</div>
+        <div>
+          <p class="erl">Volunteer Engineer</p>
+          <p class="eco">DoinGud / FightPandemics</p>
+          <p class="etxt">Frontend engineering for a COVID-19 crisis platform connecting people in need with those who can help — built and deployed at scale during the pandemic.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Open Source</span></div>
+        </div>
+      </div>
+
+      <div class="er compressed">
+        <div class="ed">2019 —<br>2020</div>
+        <div>
+          <p class="erl">Software Developer &amp; Data Analyst</p>
+          <p class="eco">Gannon University · Erie, PA</p>
+          <p class="etxt">Built React-based research management systems on AWS. Data analysis for undergraduate admissions.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">AWS</span><span class="tag">Data Analysis</span></div>
+        </div>
+      </div>
+
+      <div class="er compressed">
+        <div class="ed">2014 —<br>2016</div>
+        <div>
+          <p class="erl">Frontend Developer</p>
+          <p class="eco">Grafi Offshore · Kathmandu</p>
+          <p class="etxt">Built mobile-first SPAs in React with RESTful APIs. Delivered responsive interfaces across client industries.</p>
+          <div class="tags"><span class="tag">React</span><span class="tag">CSS3</span><span class="tag">PHP</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="casestudies" class="sect">
+    <p class="sl">Case studies</p>
+    <div class="cslist">
+
+      <div class="cs">
+        <p class="cst">Outlet Commerce Strategy</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Needed a dedicated outlet experience without a second platform, subdomain, or duplicate marketing infrastructure — without diluting the premium brand.</p></div>
+          <div class="cscol"><p>Solution</p><p>Designed and launched a subfolder outlet experience within Shopify Plus with separate merchandising, navigation, and promotional workflows directing outlet shoppers appropriately.</p></div>
+          <div class="cscol"><p>Impact</p><p>Eliminated the cost of a second platform. Created a scalable outlet channel representing approximately <strong>10% of ecommerce revenue</strong>. Improved merchandising for both segments.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Organic SEO Transformation</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Organic search visibility was underperforming — limited non-paid traffic and weak rankings for branded and category keywords.</p></div>
+          <div class="cscol"><p>Solution</p><p>Redesigned collection and product pages with improved metadata, keyword targeting, structured content, and SEO best practices. Optimized product taxonomy and collection architecture.</p></div>
+          <div class="cscol"><p>Impact</p><p>Alexa ranking improved from approximately <strong>150K to 22K globally</strong>. First-page rankings for "Elie Tahari" and "Tahari." Increased organic traffic, reduced paid dependence.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Intelligent Promotion Strategy</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Loyal customers frequently purchased from competing brands because promotional strategies were reactive rather than personalized.</p></div>
+          <div class="cscol"><p>Solution</p><p>Built a promotion framework based on customer behavior, purchase history, and loyalty segmentation. Introduced VIP early-access campaigns and personalized promotional experiences.</p></div>
+          <div class="cscol"><p>Impact</p><p>Increased engagement from returning customers. Improved promotional effectiveness. Strengthened customer retention and repeat purchase rate.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Product Intelligence for Digital Marketing</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Advertising platforms lacked the product intelligence needed to match the right products with the right customer segments, limiting campaign efficiency.</p></div>
+          <div class="cscol"><p>Solution</p><p>Designed a product-tagging framework with custom attributes enriching feeds across Google Merchant Center, Meta Commerce, Criteo, affiliate platforms, and other channels.</p></div>
+          <div class="cscol"><p>Impact</p><p>Improved product discoverability across digital channels. Increased campaign relevance and conversion by matching products to customer intent.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Inventory Intelligence Platform</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Seasonal inventory changes created limited visibility across Shopify, warehouse operations, and production — leading to manual reconciliation and slower decisions.</p></div>
+          <div class="cscol"><p>Solution</p><p>Built an inventory intelligence platform connecting Shopify, warehouse management, and production data into a unified operational dashboard with automated monitoring and reporting.</p></div>
+          <div class="cscol"><p>Impact</p><p>Reduced manual reconciliation. Improved inventory accuracy. Enabled faster merchandising, purchasing, and promotional decisions across cross-functional teams.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Customer Acquisition Modernization</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>The customer base was aging. The brand needed to increase awareness among younger consumers while expanding digital acquisition channels.</p></div>
+          <div class="cscol"><p>Solution</p><p>Expanded social commerce by strengthening Instagram presence and launching TikTok Shop. Improved digital merchandising and channel infrastructure to support younger audience acquisition.</p></div>
+          <div class="cscol"><p>Impact</p><p>Expanded brand visibility across emerging social commerce channels. Increased awareness among younger segments. Built the foundation for future social commerce growth.</p></div>
+        </div>
+      </div>
+
+      <div class="cs">
+        <p class="cst">Customer Acquisition Cost Optimization</p>
+        <div class="csrow">
+          <div class="cscol"><p>Challenge</p><p>Marketing campaigns attracted significant volumes of low-intent traffic, increasing new customer acquisition costs and lowering conversion rates.</p></div>
+          <div class="cscol"><p>Solution</p><p>Refined campaign targeting, customer segmentation, and merchandising strategies to focus marketing investment on higher-quality audiences with stronger purchase intent.</p></div>
+          <div class="cscol"><p>Impact</p><p>Reduced wasted advertising spend. Improved traffic quality and conversion efficiency. Supported stronger return on marketing investment.</p></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WRITING -->
+  <section id="writing" class="sect">
+    <p class="sl">Writing · LinkedIn</p>
+    <div class="alist">
+      <a href="https://www.linkedin.com/pulse/next-generation-wont-shop-way-we-did-saurav-karki-ror8c/?trackingId=YYpxpQWNfZEJh62ax1xWDA%3D%3D" target="_blank" class="ar">
+        <div class="adt">Jun 2026</div>
+        <div>
+          <p class="att">The next generation won't shop the way we did<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></p>
+          <p class="aex">AI has the potential to fundamentally reshape the buying journey. The next competitive advantage may not be better advertising — but better product intelligence.</p>
+          <span class="acat">AI Commerce</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/pulse/how-structured-product-intelligence-replace-saurav-karki-uhyvc/?trackingId=omXG%2BuKBKr8lirsiiKd2VA%3D%3D" target="_blank" class="ar">
+        <div class="adt">Jun 2026</div>
+        <div>
+          <p class="att">How structured product intelligence will replace traditional merchandising<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></p>
+          <p class="aex">AI agents don't browse — they understand, compare, and recommend. The future belongs to brands whose product data those agents trust most.</p>
+          <span class="acat">Strategy</span>
+        </div>
+      </a>
+      <a href="https://www.linkedin.com/pulse/why-shopify-winning-agentic-commerce-era-merchants-should-karki-d2mpe/?trackingId=rS2BKoKbnZXDPWMb0gaIJA%3D%3D" target="_blank" class="ar">
+        <div class="adt">Jun 2026</div>
+        <div>
+          <p class="att">Why Shopify is winning the agentic commerce era<svg viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg></p>
+          <p class="aex">The brands that build AI-readable infrastructure now will have a durable, compounding advantage. The window is open — but closing fast.</p>
+          <span class="acat">AI Commerce</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- CAPABILITIES -->
+  <section id="capabilities" class="sect">
+    <p class="sl">Capabilities</p>
+    <div class="sgrid">
+      <div>
+        <p class="sgl">Commerce platforms</p>
+        <div class="chips">
+          <span class="chip">Shopify Plus</span><span class="chip">Klaviyo</span><span class="chip">GA4</span><span class="chip">Google Tag Manager</span><span class="chip">Google Merchant</span><span class="chip">Meta Commerce</span><span class="chip">TikTok Shop</span><span class="chip">Gorgias</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">Commerce operations</p>
+        <div class="chips">
+          <span class="chip">ERP</span><span class="chip">Inventory Intelligence</span><span class="chip">Order Management</span><span class="chip">Cross-Border Commerce</span><span class="chip">Fulfillment</span><span class="chip">Workflow Automation</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">Commerce intelligence</p>
+        <div class="chips">
+          <span class="chip">Business Intelligence</span><span class="chip">Executive Reporting</span><span class="chip">SQL</span><span class="chip">Analytics</span><span class="chip">Commerce Intelligence</span><span class="chip">Data Visualization</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">Development</p>
+        <div class="chips">
+          <span class="chip">Liquid</span><span class="chip">JavaScript</span><span class="chip">REST APIs</span><span class="chip">System Integrations</span><span class="chip">Automation</span><span class="chip">Technical SEO</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">Growth &amp; optimization</p>
+        <div class="chips">
+          <span class="chip">CRO</span><span class="chip">Digital Merchandising</span><span class="chip">Lifecycle Marketing</span><span class="chip">SEO</span><span class="chip">Personalization</span><span class="chip">Customer Segmentation</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">Leadership</p>
+        <div class="chips">
+          <span class="chip">Technology Strategy</span><span class="chip">Cross-functional Leadership</span><span class="chip">Vendor Management</span><span class="chip">Stakeholder Management</span><span class="chip">Digital Transformation</span><span class="chip">Strategic Planning</span>
+        </div>
+      </div>
+      <div>
+        <p class="sgl">AI &amp; future commerce</p>
+        <div class="chips">
+          <span class="chip">AI Commerce</span><span class="chip">Product Intelligence</span><span class="chip">Agentic Commerce</span><span class="chip">Workflow Automation</span><span class="chip">Knowledge Architecture</span><span class="chip">LLMs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sect">
+    <p class="sl">What's next</p>
+    <div class="cw">
+      <p class="cx-label">Currently exploring</p>
+      <ul class="cx-list">
+        <li>AI Merchandising</li>
+        <li>Agentic Commerce</li>
+        <li>Product Intelligence</li>
+        <li>Commerce Operating Systems</li>
+        <li>Retail Knowledge Graphs</li>
+      </ul>
+      <p class="cx-q">Interested in the same problems?</p>
+      <h2 class="ch">Let's connect.</h2>
+      <a href="https://www.linkedin.com/in/saurav9005/" target="_blank" class="cbtn">→ Connect on LinkedIn</a>
+    </div>
+    <div class="fn"><p>Designed &amp; built by Saurav Karki &nbsp;·&nbsp; <a href="https://www.linkedin.com/in/saurav9005/" target="_blank">LinkedIn</a> &nbsp;·&nbsp; New York City &nbsp;·&nbsp; 2026</p></div>
+  </section>
+
+</main>
+</div>
+
+<script>
+const sects=document.querySelectorAll('.sect');
+const links=document.querySelectorAll('.snav a');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const id=e.target.id;
+      links.forEach(l=>{l.classList.remove('active');if(l.getAttribute('href')==='#'+id)l.classList.add('active')});
+    }
+  });
+},{rootMargin:'-25% 0px -65% 0px'});
+sects.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
